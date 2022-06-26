@@ -1,7 +1,5 @@
 includes:
 	- vendor/nunomaduro/larastan/extension.neon
-	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
-	- vendor/phpstan/phpstan-strict-rules/rules.neon
 
 parameters:
 	level: 7
@@ -9,5 +7,3 @@ parameters:
 	checkMissingIterableValueType: false
 	paths:
 		- app
-	ignoreErrors:
-	    - '#Dynamic call to static method (Illuminate\\Database\\Query\\Builder|Illuminate\\Database\\Eloquent\\(Builder|Relations\\.*)|App\\Database\\NodeBuilder)(<.*>)?::\w+\(#'

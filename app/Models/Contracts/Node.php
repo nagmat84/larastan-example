@@ -5,8 +5,6 @@ namespace App\Models\Contracts;
 use App\Database\NodeBuilder;
 use App\Database\NodeCollection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\Builder as BaseBuilder;
 
 /**
@@ -39,20 +37,6 @@ interface Node
 	 * @return NodeCollection<TNodeModel>
 	 */
 	public function newCollection(array $models = []): NodeCollection;
-
-	/**
-	 * Relation to the parent.
-	 *
-	 * @return BelongsTo<TNodeModel, TNodeModel>
-	 */
-	public function parent(): BelongsTo;
-
-	/**
-	 * Relation to children.
-	 *
-	 * @return HasMany<TNodeModel>
-	 */
-	public function children(): HasMany;
 
 	/**
 	 * Get query for siblings of the node.
