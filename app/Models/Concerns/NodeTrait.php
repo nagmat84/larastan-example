@@ -4,12 +4,11 @@ namespace App\Models\Concerns;
 
 use App\Database\NodeBuilder;
 use App\Database\NodeCollection;
-use App\Models\Contracts\Node;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder as BaseBuilder;
 
 /**
- * @template TNodeModel of Model&Node
+ * @template TNodeModel of Model
  */
 trait NodeTrait
 {
@@ -71,6 +70,6 @@ trait NodeTrait
 	{
 		return $this->newModelQuery()
 			->where($this->getKeyName(), '<>', $this->getKey())
-			->where(Node::PARENT_ID_NAME, '=', $this->getAttribute(Node::PARENT_ID_NAME));
+			->where('parent_id', '=', $this->getAttribute('parent_id'));
 	}
 }
