@@ -11,10 +11,9 @@ class Controller extends BaseController
 	/**
 	 * @return NodeCollection<Node>
 	 */
-	public function getSiblings(): NodeCollection
+	public function getSomething(): NodeCollection
 	{
-		/** @var Node $node */
-		$node = Node::query()->find(42);
-		return $node->siblings()->whereBetween('id', [1,2])->get();
+		$node = new Node();
+		return $node->newModelQuery()->whereBetween('id', [1,2])->get();
 	}
 }
