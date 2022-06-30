@@ -9,11 +9,10 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
 	/**
-	 * @return NodeCollection<Node>
+	 * @return NodeCollection<int, Node>
 	 */
 	public function getSomething(): NodeCollection
 	{
-		$node = new Node();
-		return $node->newModelQuery()->whereBetween('id', [1,2])->get();
+		return Node::query()->whereBetween('id', [1,2])->get();
 	}
 }

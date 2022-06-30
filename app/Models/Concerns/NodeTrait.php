@@ -26,7 +26,7 @@ trait NodeTrait
 
 	/**
 	 * @param array $models
-	 * @return NodeCollection<TModelClass>
+	 * @return NodeCollection<int, TModelClass>
 	 */
 	public function newCollection(array $models = []): NodeCollection
 	{
