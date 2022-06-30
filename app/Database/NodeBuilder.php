@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @template TNodeModel of Model
- * @phpstan-extends EloquentBuilder<TNodeModel>
+ * @template TModelClass of Model
+ * @phpstan-extends EloquentBuilder<TModelClass>
  */
 class NodeBuilder extends EloquentBuilder
 {

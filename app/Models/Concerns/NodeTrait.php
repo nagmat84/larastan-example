@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder as BaseBuilder;
 
 /**
- * @template TNodeModel of Model
+ * @template TModelClass of Model
  */
 trait NodeTrait
 {
@@ -16,19 +16,21 @@ trait NodeTrait
 	 * See {@link \Illuminate\Database\Eloquent\Model::newEloquentBuilder()}.
 	 *
 	 * @param BaseBuilder $query
-	 * @return NodeBuilder<TNodeModel>
+	 * @return NodeBuilder<TModelClass>
 	 */
 	public function newEloquentBuilder($query)
 	{
+		/** @phpstan-ignore-next-line  */
 		return new NodeBuilder($query);
 	}
 
 	/**
 	 * @param array $models
-	 * @return NodeCollection<TNodeModel>
+	 * @return NodeCollection<TModelClass>
 	 */
 	public function newCollection(array $models = []): NodeCollection
 	{
+		/** @phpstan-ignore-next-line  */
 		return new NodeCollection($models);
 	}
 }
