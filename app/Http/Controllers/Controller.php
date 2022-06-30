@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
 	/**
-	 * @return NodeCollection<Node>
+	 * @return NodeCollection<int, Node>
 	 */
 	public function getSiblings(): NodeCollection
 	{
