@@ -79,7 +79,7 @@ trait NodeTrait
 
 	/**
 	 * @param array $models
-	 * @return NodeCollection<TModelClass>
+	 * @return NodeCollection<int, TModelClass>
 	 */
 	public function newCollection(array $models = []): NodeCollection
 	{
@@ -94,8 +94,7 @@ trait NodeTrait
 	 */
 	public function parent(): BelongsTo
 	{
-		return $this->belongsTo(get_class($this), Node::PARENT_ID_NAME)
-			->setModel($this);
+		return $this->belongsTo(get_class($this), Node::PARENT_ID_NAME);
 	}
 
 	/**
@@ -105,8 +104,7 @@ trait NodeTrait
 	 */
 	public function children(): HasMany
 	{
-		return $this->hasMany(get_class($this), Node::PARENT_ID_NAME)
-			->setModel($this);
+		return $this->hasMany(get_class($this), Node::PARENT_ID_NAME);
 	}
 
 	/**

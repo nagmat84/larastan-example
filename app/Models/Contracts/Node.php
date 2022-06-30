@@ -17,7 +17,7 @@ use Illuminate\Database\Query\Builder as BaseBuilder;
  * @property int|string|null $parent_id
  * @property Node $parent
  * @phpstan-property TModelClass $parent
- * @property NodeCollection<TModelClass> $children
+ * @property NodeCollection<int, TModelClass> $children
  */
 interface Node
 {
@@ -36,7 +36,7 @@ interface Node
 
 	/**
 	 * @param array $models
-	 * @return NodeCollection<TModelClass>
+	 * @return NodeCollection<int, TModelClass>
 	 */
 	public function newCollection(array $models = []): NodeCollection;
 

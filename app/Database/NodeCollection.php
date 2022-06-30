@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @template TModelClass of Model&Node
- * @phpstan-extends EloquentCollection<array-key, TModelClass>
+ * @template TKey of array-key
+ * @template TModel of Model&Node
+ * @phpstan-extends EloquentCollection<TKey, TModel>
  */
 class NodeCollection extends EloquentCollection
 {
