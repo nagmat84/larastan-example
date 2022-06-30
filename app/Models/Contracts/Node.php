@@ -10,14 +10,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\Builder as BaseBuilder;
 
 /**
- * @template TNodeModel of Model&Node
+ * @template TModelClass of Model&Node
  *
  * @property int $_lft
  * @property int $_rgt
  * @property int|string|null $parent_id
  * @property Node $parent
- * @phpstan-property TNodeModel $parent
- * @property NodeCollection<TNodeModel> $children
+ * @phpstan-property TModelClass $parent
+ * @property NodeCollection<TModelClass> $children
  */
 interface Node
 {
@@ -25,39 +25,39 @@ interface Node
 
 	/**
 	 * @param BaseBuilder $query
-	 * @return NodeBuilder<TNodeModel>
+	 * @return NodeBuilder<TModelClass>
 	 */
 	public function newEloquentBuilder($query);
 
 	/**
-	 * @return NodeBuilder<TNodeModel>
+	 * @return NodeBuilder<TModelClass>
 	 */
 	public function newModelQuery();
 
 	/**
 	 * @param array $models
-	 * @return NodeCollection<TNodeModel>
+	 * @return NodeCollection<TModelClass>
 	 */
 	public function newCollection(array $models = []): NodeCollection;
 
 	/**
 	 * Relation to the parent.
 	 *
-	 * @return BelongsTo<TNodeModel, TNodeModel>
+	 * @return BelongsTo<TModelClass, TModelClass>
 	 */
 	public function parent(): BelongsTo;
 
 	/**
 	 * Relation to children.
 	 *
-	 * @return HasMany<TNodeModel>
+	 * @return HasMany<TModelClass>
 	 */
 	public function children(): HasMany;
 
 	/**
 	 * Get query for siblings of the node.
 	 *
-	 * @return NodeBuilder<TNodeModel>
+	 * @return NodeBuilder<TModelClass>
 	 */
 	public function siblings(): NodeBuilder;
 }

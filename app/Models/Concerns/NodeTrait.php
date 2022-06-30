@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\Builder as BaseBuilder;
 
 /**
- * @template TNodeModel of Model&Node
+ * @template TModelClass of Model&Node
  */
 trait NodeTrait
 {
@@ -36,7 +36,7 @@ trait NodeTrait
 	 * @param  string|null  $foreignKey
 	 * @param  string|null  $ownerKey
 	 * @param  string|null  $relation
-	 * @return BelongsTo<TNodeModel>
+	 * @return BelongsTo<TModelClass>
 	 */
 	abstract public function belongsTo($related, $foreignKey = null, $ownerKey = null, $relation = null);
 
@@ -46,7 +46,7 @@ trait NodeTrait
 	 * @param string $related
 	 * @param string|null $foreignKey
 	 * @param string|null  $localKey
-	 * @return HasMany<TNodeModel>
+	 * @return HasMany<TModelClass>
 	 */
 	abstract public function hasMany($related, $foreignKey = null, $localKey = null);
 
@@ -61,7 +61,7 @@ trait NodeTrait
 	/**
 	 * See {@link \Illuminate\Database\Eloquent\Model::newModelQuery()}.
 	 *
-	 * @return NodeBuilder<TNodeModel>
+	 * @return NodeBuilder<TModelClass>
 	 */
 	abstract public function newModelQuery();
 
@@ -69,26 +69,28 @@ trait NodeTrait
 	 * See {@link \Illuminate\Database\Eloquent\Model::newEloquentBuilder()}.
 	 *
 	 * @param BaseBuilder $query
-	 * @return NodeBuilder<TNodeModel>
+	 * @return NodeBuilder<TModelClass>
 	 */
 	public function newEloquentBuilder($query)
 	{
+		/** @phpstan-ignore-next-line  */
 		return new NodeBuilder($query);
 	}
 
 	/**
 	 * @param array $models
-	 * @return NodeCollection<TNodeModel>
+	 * @return NodeCollection<TModelClass>
 	 */
 	public function newCollection(array $models = []): NodeCollection
 	{
+		/** @phpstan-ignore-next-line  */
 		return new NodeCollection($models);
 	}
 
 	/**
 	 * Relation to the parent.
 	 *
-	 * @return BelongsTo<TNodeModel, TNodeModel>
+	 * @return BelongsTo<TModelClass, TModelClass>
 	 */
 	public function parent(): BelongsTo
 	{
@@ -99,7 +101,7 @@ trait NodeTrait
 	/**
 	 * Relation to children.
 	 *
-	 * @return HasMany<TNodeModel>
+	 * @return HasMany<TModelClass>
 	 */
 	public function children(): HasMany
 	{
@@ -110,7 +112,7 @@ trait NodeTrait
 	/**
 	 * Get query for siblings of the node.
 	 *
-	 * @return NodeBuilder<TNodeModel>
+	 * @return NodeBuilder<TModelClass>
 	 */
 	public function siblings(): NodeBuilder
 	{
