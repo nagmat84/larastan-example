@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder as BaseBuilder;
 
 /**
- * @template TNodeModel of Model&Node
+ * @template TModelClass of Model&Node
  */
 trait NodeTrait
 {
@@ -38,7 +38,7 @@ trait NodeTrait
 	/**
 	 * See {@link \Illuminate\Database\Eloquent\Model::newModelQuery()}.
 	 *
-	 * @return NodeBuilder<TNodeModel>
+	 * @return NodeBuilder<TModelClass>
 	 */
 	abstract public function newModelQuery();
 
@@ -46,26 +46,28 @@ trait NodeTrait
 	 * See {@link \Illuminate\Database\Eloquent\Model::newEloquentBuilder()}.
 	 *
 	 * @param BaseBuilder $query
-	 * @return NodeBuilder<TNodeModel>
+	 * @return NodeBuilder<TModelClass>
 	 */
 	public function newEloquentBuilder($query)
 	{
+		/** @phpstan-ignore-next-line  */
 		return new NodeBuilder($query);
 	}
 
 	/**
 	 * @param array $models
-	 * @return NodeCollection<TNodeModel>
+	 * @return NodeCollection<TModelClass>
 	 */
 	public function newCollection(array $models = []): NodeCollection
 	{
+		/** @phpstan-ignore-next-line  */
 		return new NodeCollection($models);
 	}
 
 	/**
 	 * Get query for siblings of the node.
 	 *
-	 * @return NodeBuilder<TNodeModel>
+	 * @return NodeBuilder<TModelClass>
 	 */
 	public function siblings(): NodeBuilder
 	{
