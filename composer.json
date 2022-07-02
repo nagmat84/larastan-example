@@ -9,7 +9,7 @@
         "laravel/framework": "^9.0"
     },
     "require-dev": {
-		"nunomaduro/larastan": "^2.0",
+		"nunomaduro/larastan": "dev-master",
 		"phpstan/phpstan": "^1.0"
     },
     "autoload": {
